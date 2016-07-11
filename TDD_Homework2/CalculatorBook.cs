@@ -9,13 +9,31 @@ namespace TDD_Homework2
     {
         public int CalculatorPrice(List<Book> books)
         {
-            switch (books.Count)
+            var differenceBooks = books.Distinct(new BookCompare()).ToList();
+
+            switch (differenceBooks.Count)
             {
                 case 2:
-                    return Convert.ToInt32(books.Sum(x => x.Price) * 0.95);
+                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.95);
+                case 3:
+                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.9);
                 default:
                     return books.Sum(x => x.Price);
             }
+        }
+
+    }
+
+    public class BookCompare : IEqualityComparer<Book>
+    {
+        public bool Equals(Book x, Book y)
+        {
+            return x.BookName.Equals(y.BookName);
+        }
+
+        public int GetHashCode(Book obj)
+        {
+            return obj.BookName.GetHashCode();
         }
     }
 }
