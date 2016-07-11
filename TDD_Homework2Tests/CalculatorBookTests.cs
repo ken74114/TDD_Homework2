@@ -86,5 +86,27 @@ namespace TDD_Homework2.Tests
             int expected = 320;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod()]
+        public void CalculatorPriceTest_buy_5_difference_book_should_be_375()
+        {
+            //arrange
+            var target = new CalculatorBook();
+            var books = new List<Book>
+            {
+                new Book { BookName = "Potter1", Price=100},
+                new Book {BookName="Potter2", Price=100  },
+                new Book {BookName="Potter3", Price=100  },
+                new Book {BookName="Potter4", Price=100  },
+                new Book {BookName="Potter5", Price=100  }
+            };
+
+            //act
+            var actual = target.CalculatorPrice(books);
+
+            //assert
+            int expected = 375;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
