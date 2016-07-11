@@ -1,9 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TDD_Homework2;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace TDD_Homework2.Tests
 {
@@ -24,7 +20,6 @@ namespace TDD_Homework2.Tests
             //assert
             int expected = 100;
             Assert.AreEqual(expected, actual);
-
         }
 
         [TestMethod()]
@@ -99,6 +94,27 @@ namespace TDD_Homework2.Tests
                 new Book {BookName="Potter3", Price=100  },
                 new Book {BookName="Potter4", Price=100  },
                 new Book {BookName="Potter5", Price=100  }
+            };
+
+            //act
+            var actual = target.CalculatorPrice(books);
+
+            //assert
+            int expected = 375;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void CalculatorPriceTest_buy_Potter1_volume1_and_Potter2_volume1_and_Potter3_volume2_should_be_370()
+        {
+            //arrange
+            var target = new CalculatorBook();
+            var books = new List<Book>
+            {
+                new Book { BookName = "Potter1", Price=100 },
+                new Book { BookName = "Potter2", Price=100 },
+                new Book { BookName = "Potter3", Price=100 },
+                new Book { BookName = "Potter3", Price=100 }
             };
 
             //act
