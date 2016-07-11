@@ -9,7 +9,7 @@ namespace TDD_Homework2
     {
         public int CalculatorPrice(List<Book> books)
         {
-            return 0;
+            return books.Sum(x => x.Price);
         }
     }
 }
