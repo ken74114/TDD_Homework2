@@ -17,6 +17,8 @@ namespace TDD_Homework2
                     return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.95);
                 case 3:
                     return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.9);
+                case 4:
+                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.8);
                 default:
                     return books.Sum(x => x.Price);
             }
