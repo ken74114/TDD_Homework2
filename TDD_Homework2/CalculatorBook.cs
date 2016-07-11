@@ -7,21 +7,12 @@ namespace TDD_Homework2
 {
     public class CalculatorBook
     {
+        private double[] distinct = new double[] { 1, 0.95, 0.9, 0.8, 0.75 };
         public int CalculatorPrice(List<Book> books)
         {
             var differenceBooks = books.Distinct(new BookCompare()).ToList();
 
-            switch (differenceBooks.Count)
-            {
-                case 2:
-                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.95);
-                case 3:
-                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.9);
-                case 4:
-                    return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * 0.8);
-                default:
-                    return books.Sum(x => x.Price);
-            }
+            return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * distinct[differenceBooks.Count - 1]);
         }
 
     }
