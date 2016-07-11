@@ -121,7 +121,7 @@ namespace TDD_Homework2.Tests
             var actual = target.CalculatorPrice(books);
 
             //assert
-            int expected = 375;
+            int expected = 370;
             Assert.AreEqual(expected, actual);
         }
     }
