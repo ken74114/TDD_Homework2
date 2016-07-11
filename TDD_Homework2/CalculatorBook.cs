@@ -9,7 +9,13 @@ namespace TDD_Homework2
     {
         public int CalculatorPrice(List<Book> books)
         {
-            return books.Sum(x => x.Price);
+            switch (books.Count)
+            {
+                case 2:
+                    return Convert.ToInt32(books.Sum(x => x.Price) * 0.95);
+                default:
+                    return books.Sum(x => x.Price);
+            }
         }
     }
 }

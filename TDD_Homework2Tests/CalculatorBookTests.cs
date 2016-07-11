@@ -44,7 +44,6 @@ namespace TDD_Homework2.Tests
             //assert
             int expected = 190;
             Assert.AreEqual(expected, actual);
-            Assert.Fail();
         }
     }
 }
