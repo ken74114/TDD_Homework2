@@ -11,9 +11,14 @@ namespace TDD_Homework2
 
         public int CalculatorPrice(List<Book> books)
         {
+            int total = 0;
             var differenceBooks = books.Distinct(new BookCompare()).ToList();
             differenceBooks.Select(x => books.Remove(x)).ToList();
-            return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * distinct[differenceBooks.Count - 1]) + books.Sum(x => x.Price);
+            if (books.Count > 0)
+            {
+                total += this.CalculatorPrice(books);
+            }
+            return total += Convert.ToInt32(differenceBooks.Sum(x => x.Price) * distinct[differenceBooks.Count - 1]);
         }
     }
 
