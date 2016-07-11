@@ -8,13 +8,13 @@ namespace TDD_Homework2
     public class CalculatorBook
     {
         private double[] distinct = new double[] { 1, 0.95, 0.9, 0.8, 0.75 };
+
         public int CalculatorPrice(List<Book> books)
         {
             var differenceBooks = books.Distinct(new BookCompare()).ToList();
-
-            return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * distinct[differenceBooks.Count - 1]);
+            differenceBooks.Select(x => books.Remove(x)).ToList();
+            return Convert.ToInt32(differenceBooks.Sum(x => x.Price) * distinct[differenceBooks.Count - 1]) + books.Sum(x => x.Price);
         }
-
     }
 
     public class BookCompare : IEqualityComparer<Book>
