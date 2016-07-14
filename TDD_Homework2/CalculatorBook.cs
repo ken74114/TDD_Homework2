@@ -25,13 +25,26 @@ namespace TDD_Homework2
         {
             int total = 0;
             var allBooks = books.Select(x => x.Clone()).ToList();
-            var differenceBooks = allBooks.Distinct(new BookCompare()).ToList();
-            differenceBooks.ForEach(x => allBooks.Remove(x));
+
+            var differenceBooks = GetBookSuite(allBooks);
+
+            RemoveBookSuite(differenceBooks, allBooks);
+
             if (allBooks.Count > 0)
             {
                 total += this.CalculatorPrice(allBooks);
             }
             return total += CalculateAmount(differenceBooks);
+        }
+
+        private List<Book> GetBookSuite(List<Book> books)
+        {
+            return books.Distinct(new BookCompare()).ToList();
+        }
+
+        private void RemoveBookSuite(List<Book> differenceBooks, List<Book> books)
+        {
+            differenceBooks.ForEach(x => books.Remove(x));
         }
 
         private int CalculateAmount(List<Book> books)
